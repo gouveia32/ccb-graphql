@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #2e2d4e;
+  max-width: 50%;
+  width: 400px;
+  padding-bottom: 20px;
+
+  & button {
+    border-radius: 30px;
+    background-color: #8b8ae1;
+    height: 40px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  & button:hover {
+    opacity: 0.8;
+  }
+
+  input {
+    border: 1px solid #48456c;
+    border-radius: 30px;
+    height: 40px;
+    background-color: #363653;
+    padding-left: 10px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2e2d4e;
+  margin: 10px;
+  padding: 10px;
+  width: 400px;
+  border-radius: 10px;
+
+  & p {
+    color: #fff;
+    font-weight: bold;
+    & span {
+      font-weight: normal;
+    }
+  }
+
+  & button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  & button:hover {
+    opacity: 0.6;
+  }
+}
+
+.cardButton {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  margin: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.btnCadastrar {
+  width: 75%;
+}
+
+.btnNovo {
+  width: 20%;
+}

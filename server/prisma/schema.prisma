@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum transaction_type {
+    Receita
+    Despesa
+}
+
+model User {
+    id              String    @id @default(uuid())
+    name            String
+    email           String    @unique
+    password        String
+    cpf             String?
+
+    @@map("users")
+    Account Account[] @relation("user")
+}
+
+  model Account  {
+    id          String    @id @default(uuid())
+    owner       User      @relation("user", fields: [userId], references: [id], onDelete: Cascade)
+    userId      String    @unique
+    ownerName   String
+    balance     Float
+
+    @@map("accounts")
+}
+
+
+model Transaction {
+  id            String  @id @default(uuid())
+  from          String
+  to            String
+  amount        Float
+  date          DateTime  @default(now())
+  type          transaction_type
+
+   @@map("transactions")
+}
+
+

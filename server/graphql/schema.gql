@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserModel {
+  id: String!
+  name: String!
+  email: String!
+  password: String!
+  cpf: String!
+}
+
+type LoginOutput {
+  token: String
+  id: ID!
+  name: String
+  email: String
+  accountId: ID!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  cpf: String!
+}
+
+type CreateUserOutput {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  cpf: String!
+  token: String!
+  accountId: String!
+}
+
+type AccountModel {
+  id: String!
+  balance: Float!
+  owner: User!
+  ownerName: String!
+}
+
+type Transaction {
+  id: ID!
+  from: String!
+  to: String!
+  amount: Float!
+  date: DateTime
+  type: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  users: [UserModel!]
+  user(id: ID!): UserModel
+  me: UserModel!
+  currentUser: UserModel!
+  whoami: UserModel!
+  whoAmI: UserModel!
+  accounts: [AccountModel!]
+  account(id: ID!): AccountModel
+  transactions(accountId: String!, filter: String!): [Transaction!]
+  transaction(id: ID!): Transaction
+}
+
+type Mutation {
+  createUser(name: String!, email: String!, password: String!, cpf: String!): CreateUserOutput
+  updateUser(id: String!, name: String!, email: String!, password: String!, cpf: String!): UserModel
+  deleteUser(id: String!): UserModel
+  login(email: String!, password: String!): LoginOutput!
+  createAccount(ownerId: String!): AccountModel
+  deleteAccount(id: ID!): AccountModel
+  createTransaction(from: String!, to: String!, amount: Float!): Transaction!
+  deleteTransaction(id: ID!): Transaction
+}
