@@ -1,5 +1,5 @@
 import "./style.css";
-import Trash from "../../assets/trash.svg";
+import Trash from "../../assets/trash3.svg";
 
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -178,7 +178,7 @@ function Home() {
               <p>Cpf: <span>{user.cpf}</span></p>
             </div>
           <button onClick={() => handleDeleteUser(user.id)}>
-            <img src={Trash} /> 
+            <img src={Trash} width={20} /> 
           </button>
         </div>
         )) } 
