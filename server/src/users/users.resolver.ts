@@ -1,14 +1,11 @@
 import { Args, ID, Int, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { UsersService } from './users.service';
-//import { CreateUserInput } from './dto/create-user.input';
-import { UpdateUserInput } from './dto/update-user.input';
-import { LoginInput, LoginOutput } from './dto/login.dto';
-import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from "src/auth/auth.guard";
 import { AuthUser } from "src/auth/auth-user.decorator";
 import { CreateUserOutput } from "./dto/create-user.output";
 import { UserModel } from "./model-user";
 import { User } from "@prisma/client";
+import { LoginOutput } from "./dto/login.dto";
 
 @Resolver(() => UserModel)
 export class UsersResolver {
@@ -42,10 +39,9 @@ export class UsersResolver {
     @Args('id') id: string,
     @Args('name') name: string,
     @Args('email') email: string,
-    @Args('password') password: string,
     @Args('cpf') cpf: string,
   ): Promise<CreateUserOutput> {
-    const user = await this.usersService.update({ id, name, email, password, cpf });
+    const user = await this.usersService.update({ id, name, email, cpf });
     return user;
   }
 

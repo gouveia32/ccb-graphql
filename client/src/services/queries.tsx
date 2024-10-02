@@ -33,12 +33,11 @@ import { gql } from "@apollo/client";
 
   //Mutation : Altera o usuário
   export const UPDATE_USER = gql`
-  mutation UpdateUser ($id: String!, $name: String!, $email: String!, $password: String!, $cpf: String!) {
+  mutation UpdateUser ($id: String!, $name: String!, $email: String!, $cpf: String!) {
     updateUser(
       id: $id,
       name: $name,
       email: $email,
-      password: $password,
       cpf: $cpf
     ) {
       id

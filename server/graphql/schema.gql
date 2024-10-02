@@ -2,22 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserModel {
-  id: String!
-  name: String!
-  email: String!
-  password: String!
-  cpf: String!
-}
-
-type LoginOutput {
-  token: String
-  id: ID!
-  name: String
-  email: String
-  accountId: ID!
-}
-
 type User {
   id: ID!
   name: String!
@@ -34,6 +18,22 @@ type CreateUserOutput {
   cpf: String!
   token: String!
   accountId: String!
+}
+
+type UserModel {
+  id: String!
+  name: String!
+  email: String!
+  password: String!
+  cpf: String!
+}
+
+type LoginOutput {
+  token: String
+  id: ID!
+  name: String
+  email: String
+  accountId: ID!
 }
 
 type AccountModel {
@@ -72,7 +72,7 @@ type Query {
 
 type Mutation {
   createUser(name: String!, email: String!, password: String!, cpf: String!): CreateUserOutput
-  updateUser(id: String!, name: String!, email: String!, password: String!, cpf: String!): UserModel
+  updateUser(id: String!, name: String!, email: String!, cpf: String!): UserModel
   deleteUser(id: String!): UserModel
   login(email: String!, password: String!): LoginOutput!
   createAccount(ownerId: String!): AccountModel

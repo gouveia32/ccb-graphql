@@ -72,7 +72,6 @@ function Home() {
           id: currentRec, 
           name: inputName.current?.value, 
           email: inputEmail.current?.value, 
-          password: inputPassword.current?.value,
           cpf: inputCpf.current?.value} })
         .then(() => {
           showToastMessage("Cliente adicionado com sucesso!",2);
@@ -159,7 +158,7 @@ function Home() {
           </h1>
           <input placeholder="Nome" name="name" ref={inputName} type="text" />
           <input placeholder="Email" name="email" ref={inputEmail} type="text" />
-          <input placeholder="Senha" name="password" ref={inputPassword} type="text" />
+          <input placeholder="Senha" name="password" hidden={!newRec} ref={inputPassword} type="text" />
           <input placeholder="Cpf" name="cpf" ref={inputCpf} type="text" />
           <div className="cardButton">
             <button type="button" onClick={handleWriteUser} className="btnCadastrar" >

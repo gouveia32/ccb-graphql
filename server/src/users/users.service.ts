@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { UpdateUserInput } from './dto/update-user.input';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { LoginInput, LoginOutput } from './dto/login.dto';
 import { Prisma, User } from '@prisma/client';
-import { compare, hash } from 'bcrypt';
+import { compare, hash,  } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { CreateUserOutput } from './dto/create-user.output';
+import { UpdateUserInput } from './dto/update-user.inpui';
 
 @Injectable()
 export class UsersService {
@@ -105,12 +105,11 @@ export class UsersService {
       name,
       email,
       cpf,
-      password,
-    }: User): Promise<CreateUserOutput> {
+    }: UpdateUserInput): Promise<CreateUserOutput> {
       const token = sign({ id: id }, 'hgffgcff6gf@bgfghgcgbf');
       const user = await this.prismaService.user.update({
           where: { id: id },
-          data: { name, email, password, cpf}
+          data: { name, email, cpf}
       });
       return {
         id: user.id,
